@@ -7,13 +7,29 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.iu.boot3.util.Pager;
 @SpringBootTest
 class BoardMapperTest {
 
 	@Autowired
 	private BoardMapper boardMapper;
 	
-	@Test
+	//@Test
+	void setFileAddTest()throws Exception{
+		BoardFilesVO boardFilesVO = new BoardFilesVO();
+		boardFilesVO.setFileName("fileName");
+		boardFilesVO.setOriName("oriName");
+		boardFilesVO.setNum(3L);
+		
+		int result = boardMapper.setFileAdd(boardFilesVO);
+		assertEquals(1, result);
+		
+		
+	}
+	
+	
+	//@Test
 	void setDeleteTest()throws Exception{
 		BoardVO boardVO = new BoardVO();
 		boardVO.setNum(4L);
@@ -21,7 +37,7 @@ class BoardMapperTest {
 		assertEquals(1, result);
 	}
 	
-	@Test
+	//@Test
 	void setUpdateTest()throws Exception{
 		BoardVO boardVO = new BoardVO();
 		boardVO.setTitle("Title Update");
@@ -32,25 +48,37 @@ class BoardMapperTest {
 	}
 	
 	
-	@Test
+	//@Test
 	void setAddTest()throws Exception{
-		BoardVO boardVO = new BoardVO();
-		boardVO.setTitle("addTitle");
-		boardVO.setWriter("addWriter");
-		boardVO.setContents("addContents");
-		int result = boardMapper.setAdd(boardVO);
-		assertEquals(1, result);
+		
+		for(int i=0;i<100;i++) {
+			if(i%10 ==0) {
+				Thread.sleep(1000);
+			}
+			
+			BoardVO boardVO = new BoardVO();
+			boardVO.setTitle("addTitle"+i);
+			boardVO.setWriter("addWriter"+i);
+			boardVO.setContents("addContents"+i);
+			int result = boardMapper.setAdd(boardVO);
+		
+		}
+		System.out.println("Finish");
+		//assertEquals(1, result);
 	}
 	
 	@Test
 	void getListTest()throws Exception{
-		List<BoardVO> ar = boardMapper.getList();
+		Pager pager = new Pager();
+		pager.makeRow();
+		List<BoardVO> ar = boardMapper.getList(pager);
 		
-		assertNotEquals(0, ar.size());
+		System.out.println(ar);
+		assertEquals(10, ar.size());
 		
 	}
 	
-	@Test
+	//@Test
 	void test() throws Exception {
 		BoardVO boardVO = new BoardVO();
 		boardVO.setNum(3L);

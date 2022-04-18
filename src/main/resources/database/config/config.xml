@@ -6,6 +6,9 @@
   <configuration>
   	<typeAliases>
 		<typeAlias type="com.iu.boot3.board.BoardVO" alias="BoardVO"/>
+		<typeAlias type="com.iu.boot3.board.BoardFilesVO" alias="BoardFilesVO"/>
+		
+		<typeAlias type="com.iu.boot3.util.Pager" alias="Pager"/>
   	</typeAliases>
   
   </configuration>
