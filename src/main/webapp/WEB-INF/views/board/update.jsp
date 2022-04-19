@@ -16,29 +16,30 @@
 <div class="container mt-4">
 	<div class="row mt-4">
 		<div class="alert alert-light" role="alert">
-	  		<h4 style="text-transform: uppercase;">${board} Write</h4>
+	  		<h4 style="text-transform: uppercase;">${board} Update</h4>
 		</div>
 	</div>
 	
 	
 	<div class="row mt-4">
-		<form action="add" method="post" enctype="multipart/form-data">
+		<form action="update" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="num" value="${vo.num}">
 		  <div class="row mb-3">
 		    <label for="title" class="col-sm-2 col-form-label">Title</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="title" class="form-control" id="title">
+		      <input type="text" value="${vo.title}" name="title" class="form-control" id="title">
 		    </div>
 		  </div>
 		  <div class="row mb-3">
 		    <label for="writer" class="col-sm-2 col-form-label">Writer</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="writer" class="form-control" id="writer">
+		      <input type="text" value="${vo.writer}" name="writer" class="form-control" id="writer">
 		    </div>
 		  </div>
 		 <div class="row mb-3">
 		    <label for="contents" class="col-sm-2 col-form-label">Contents</label>
 		    <div class="col-sm-10">
-		      <textarea name="contents" class="form-control" id="contents"></textarea>
+		      <textarea name="contents" class="form-control" id="contents">${vo.contents}</textarea>
 		    </div>
 		  </div>
 		  
@@ -59,7 +60,7 @@
 		  
 		  
 		 
-		  <button type="submit" class="btn btn-primary">Write</button>
+		  <button type="submit" class="btn btn-primary">Update</button>
 		</form>
 	
 	</div>

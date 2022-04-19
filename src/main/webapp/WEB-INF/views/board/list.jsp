@@ -36,7 +36,7 @@
 			<c:forEach items="${list}" var="vo">
 				<tr>
 					<td>${vo.num}</td>
-					<td>${vo.title}</td>
+					<td><a class="link-success text-decoration-none" href="./detail?num=${vo.num}">${vo.title}</a></td>
 					<td>${vo.writer}</td>
 					<td>${vo.hit}</td>
 					<td>${vo.regDate}</td>
@@ -49,7 +49,7 @@
 	
 	<div class="row">
 		<nav aria-label="Page navigation example">
-		  <ul class="pagination align-self-center">
+		  <ul class="pagination">
 		    <li class="page-item">
 		      <a class="page-link" href="./list?pn=${pager.pre?pager.startNum-1:1}&kind=${pager.kind}&search=${pager.search}" aria-label="Previous">
 		        <span aria-hidden="true">&laquo;</span>
