@@ -49,19 +49,19 @@
 	
 	<div class="row">
 		<nav aria-label="Page navigation example">
-		  <ul class="pagination">
+		  <ul class="pagination align-self-center">
 		    <li class="page-item">
-		      <a class="page-link" href="./list?pn=${pager.pre?pager.startNum-1:1}&kind=${kind}&search=${search}" aria-label="Previous">
+		      <a class="page-link" href="./list?pn=${pager.pre?pager.startNum-1:1}&kind=${pager.kind}&search=${pager.search}" aria-label="Previous">
 		        <span aria-hidden="true">&laquo;</span>
 		      </a>
 		    </li>
 		    
 		    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-		    <li class="page-item"><a class="page-link" href="./list?pn=${i}&kind=${kind}&search=${search}">${i}</a></li>
+		    <li class="page-item"><a class="page-link" href="./list?pn=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
 		    </c:forEach>
 		    
 		    <li class="page-item">
-		      <a class="page-link" href="./list?pn=${pager.next?pager.lastNum+1:pager.lastNum}&kind=${kind}&search=${search}" aria-label="Next">
+		      <a class="page-link" href="./list?pn=${pager.next?pager.lastNum+1:pager.lastNum}&kind=${pager.kind}&search=${pager.search}" aria-label="Next">
 		        <span aria-hidden="true">&raquo;</span>
 		      </a>
 		    </li>
