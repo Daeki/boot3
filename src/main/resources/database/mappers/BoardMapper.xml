@@ -14,9 +14,40 @@
  		SELECT * FROM BOARD WHERE NUM=#{num}
  	</select>
  	
+ 	<select id="getTotalCount" resultType="java.lang.Long" parameterType="Pager">
+ 		SELECT COUNT(NUM) FROM BOARD
+ 		WHERE
+ 		<choose>
+ 			<when test="kind == 'col1'">
+ 				TITLE
+ 			</when>
+ 			<when test="kind == 'col2'">
+ 				CONTENTS
+ 			</when>
+ 			<otherwise>
+ 				WRITER
+ 			</otherwise>
+ 		</choose>
+ 		LIKE concat('%', #{search},'%')
+ 	</select>
+ 	
  	<select id="getList" resultType="BoardVO" parameterType="Pager">
  		SELECT * FROM BOARD
- 		WHERE NUM > 0
+ 		WHERE NUM > 0 and 
+ 		
+ 		<choose>
+ 			<when test="kind == 'col1'">
+ 				TITLE
+ 			</when>
+ 			<when test="kind == 'col2'">
+ 				CONTENTS
+ 			</when>
+ 			<otherwise>
+ 				WRITER
+ 			</otherwise>
+ 		</choose>
+ 		LIKE concat('%', #{search},'%')
+ 		 
  		ORDER BY NUM DESC 
  		LIMIT #{startRow}, #{perPage}
  	</select>
