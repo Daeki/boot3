@@ -18,23 +18,21 @@
 	<div class="row">
 		<div class="card">
 			<ul class="list-group list-group-flush">
-			   	<li class="list-group-item">${vo.title}</li>
-		   		<li class="list-group-item">${vo.writer} </li>
+			   	<li class="list-group-item">${member.id}</li>
+		   		<li class="list-group-item">${vo.name} </li>
+		   		<li class="list-group-item">${vo.email} </li>
+		   		<li class="list-group-item">${vo.phone} </li>
 			</ul>
 		  
-			<div class="card-body">
-				${vo.contents}
-	    	</div>
+			
 	    	
 	    	<hr class="my-6">
-	    		<h6>첨부파일</h6>
+	    		<h6>Photo</h6>
 	    	
 				<ul class="list-group list-group-flush">
-				   	<c:forEach items="${vo.filesVOs}" var="f">
 				   	<li class="list-group-item">
-				   		<a href="./fileDown?fileNum=${f.fileNum}">${f.oriName}</a>
+				   		<a href="./fileDown?fileNum=${vo.memberFilesVO.fileName}">${vo.memberFilesVO.oriName}</a>
 				   	</li>
-				   	</c:forEach>
 				</ul>
 
     	 
@@ -45,8 +43,8 @@
 </div>
 	<div class="container my-4">
 		<div class="col-2 d-flex">
-			<a href="update?num=${vo.num}" role="button" class="btn btn-success mx-1">Update</a>
-			<a href="delete?num=${vo.num}" role="button" class="btn btn-danger mx-1">Delete</a>
+			<a href="update" role="button" class="btn btn-success mx-1">Update</a>
+			<a href="delete" role="button" class="btn btn-danger mx-1">Delete</a>
 		</div>
 	</div>
 

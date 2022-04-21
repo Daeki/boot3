@@ -4,6 +4,10 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
  <mapper namespace="com.iu.boot3.board.BoardMapper">
+ 	<select id="getFileDetail" parameterType="BoardFilesVO" resultType="BoardFilesVO">
+ 		SELECT * FROM BOARDFILES WHERE FILENUM = #{fileNum}
+ 	</select>
+ 
  	<select id="getFileList" parameterType="BoardVO" resultType="BoardFilesVO">
  		SELECT * FROM BOARDFILES WHERE NUM=#{num}
  	</select>
