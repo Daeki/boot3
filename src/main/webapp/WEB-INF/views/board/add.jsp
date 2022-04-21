@@ -41,22 +41,13 @@
 		    </div>
 		  </div>
 		  
-		  <div class="row mb-3">
-		    <label for="files" class="col-sm-2 col-form-label">File</label>
-		    <div class="col-sm-10">
-		      <input type="file" name="files" class="form-control" id="files">
-		    </div>
-		  </div>
-		  
-		  <div class="row mb-3">
-		    <label for="files" class="col-sm-2 col-form-label">File</label>
-		    <div class="col-sm-10">
-		      <input type="file" name="files" class="form-control" id="files">
-		    </div>
-		  </div>
+		
+		<button id="fileAdd" type="button" class="btn btn-danger d-block my-4">FileADD</button>  
 		  
 		  
-		  
+		<div id="fileResult">
+			
+		</div>
 		 
 		  <button type="submit" class="btn btn-primary">Write</button>
 		</form>
@@ -67,6 +58,30 @@
 </div>	
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<c:import url="../temp/header_script.jsp"></c:import>
+<script type="text/javascript">
+	let count=0;
+
+	$("#fileAdd").click(function() {
+		if(count>4){
+			alert('최대 5개만 가능');
+			return;
+		}
+		let result = '<div class="input-group">';
+		result = result + '<input name="files" type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">'
+		result = result + '<button class="btn btn-outline-secondary del" type="button" id="inputGroupFileAddon04">X</button>'
+		result = result + '</div>';
+		$("#fileResult").append(result);
+		count++;
+	});
+	
+	$("#fileResult").on("click", ".del", function() {
+		$(this).parent().remove();
+		count--;
+	} );
+	
+	
+	
+</script>
 </body>
 </html>

@@ -40,10 +40,11 @@
 				<div class="row mb-3">
 					<label for="checkPw" class="col-sm-2 col-form-label">Password</label>
 					<div class="col-sm-10">
-						<input type="password" name="checkPw" class="form-control" id="checkPw">
+						<input type="password" name="checkPw" class="form-control"
+							id="checkPw">
 					</div>
 				</div>
-				
+
 				<div class="row mb-3">
 					<label for="name" class="col-sm-2 col-form-label">Name</label>
 					<div class="col-sm-10">
@@ -57,14 +58,13 @@
 						<input type="email" name="email" class="form-control" id="email">
 					</div>
 				</div>
-				
+
 				<div class="row mb-3">
 					<label for="phone" class="col-sm-2 col-form-label">Phone</label>
 					<div class="col-sm-10">
 						<input type="text" name="phone" class="form-control" id="phone">
 					</div>
-				</div>				
-
+				</div>
 				<div class="row mb-3">
 					<label for="files" class="col-sm-2 col-form-label">File</label>
 					<div class="col-sm-10">
@@ -77,13 +77,50 @@
 
 		</div>
 
+		<div class="row mt-4">
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" value=""	id="all"> 
+				<label class="form-check-label"	for=all> checkbox-ALL </label>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input ch" type="checkbox" value=""	id="check1">
+				<label class="form-check-label"	for="check1"> checkbox2 </label>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input ch" type="checkbox" value=""	id="check2"> 
+				<label class="form-check-label"	for="check2"> checkbox3 </label>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input ch" type="checkbox" value=""	id="check3"> 
+				<label class="form-check-label"	for="check3"> checkbox4 </label>
+			</div>
+
+		</div>
+
 
 	</div>
 
 
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous"></script>
+	<c:import url="../temp/header_script.jsp"></c:import>
+	<script type="text/javascript">
+		$("#all").click(function(){
+			$(".ch").prop("checked", $("#all").prop("checked"));
+			
+		});
+		
+		$(".ch").on("click", function() {
+			let check= true;
+			
+			$(".ch").each(function(idx, item) {
+				if(!$(item).prop("checked")){
+					check=false;
+				}
+			});
+			
+			$("#all").prop("checked", check);
+			
+		});
+	
+	</script>
 </body>
 </html>
