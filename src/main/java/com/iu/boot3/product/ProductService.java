@@ -19,17 +19,19 @@ public class ProductService {
 	public int setAdd(ProductVO productVO, MultipartFile [] files)throws Exception{
 		int result = productMapper.setAdd(productVO);
 		
-		for(MultipartFile f : files) {
-			if(f.isEmpty()) {
-				continue;
+		if(files != null) {
+			for(MultipartFile f : files) {
+				if(f.isEmpty()) {
+					continue;
+				}
+				
+				String fileName= fileManger.fileSave(f, "resources/upload/product/");
+				ProductFilesVO productFilesVO = new ProductFilesVO();
+				productFilesVO.setProductNum(productVO.getProductNum());
+				productFilesVO.setFileName(fileName);
+				productFilesVO.setOriName(f.getOriginalFilename());
+				result = productMapper.setFileAdd(productFilesVO);
 			}
-			
-			String fileName= fileManger.fileSave(f, "resources/upload/product/");
-			ProductFilesVO productFilesVO = new ProductFilesVO();
-			productFilesVO.setProductNum(productVO.getProductNum());
-			productFilesVO.setFileName(fileName);
-			productFilesVO.setOriName(f.getOriginalFilename());
-			result = productMapper.setFileAdd(productFilesVO);
 		}
 		return result;
 	}
