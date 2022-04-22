@@ -9,6 +9,9 @@
 		<typeAlias type="com.iu.boot3.board.BoardFilesVO" alias="BoardFilesVO"/>
 		<typeAlias type="com.iu.boot3.member.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.iu.boot3.member.MemberFilesVO" alias="MemberFilesVO"/>
+		<typeAlias type="com.iu.boot3.product.ProductVO" alias="ProductVO"/>
+		<typeAlias type="com.iu.boot3.product.ProductFilesVO" alias="ProductFilesVO"/>
+		
 		<typeAlias type="com.iu.boot3.util.Pager" alias="Pager"/>
   	</typeAliases>
   
