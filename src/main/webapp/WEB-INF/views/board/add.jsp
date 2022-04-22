@@ -4,9 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
- <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<c:import url="../temp/header_css.jsp"></c:import>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<c:import url="../temp/header_css.jsp"></c:import>
+	<c:import url="../temp/header_script.jsp"></c:import>
+
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -58,8 +62,14 @@
 </div>	
 
 
-<c:import url="../temp/header_script.jsp"></c:import>
+
 <script type="text/javascript">
+	$("#contents").summernote({
+		height:400
+	});
+
+
+
 	let count=0;
 
 	$("#fileAdd").click(function() {

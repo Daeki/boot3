@@ -21,24 +21,22 @@
 	</div>
 	
 	<div class="row mt-4">
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th></th>
-					<th>Title</th>
-					<th>Writer</th>
-					<th>Hit</th>
-					<th>Date</th>
-				</tr>
-			</thead>
-			<tbody>
-
-			</tbody>
-			
-		</table>
+		<c:forEach items="${list}" var="vo">
+			<div class="card col-3">
+			  <img src="../resources/upload/product/${vo.productFilesVOs[0].fileName}" class="card-img-top" alt="...">
+			  <div class="card-body">
+			    <p class="card-text">${vo.productName}</p>
+			  </div>
+			    <div class="card-footer">
+				    <h5>${vo.productPrice}</h5>
+				</div>
+			</div>
+		</c:forEach>
+		
+		
 	</div>
 	
-	<div class="row">
+	<div class="row my-4">
 		<nav aria-label="Page navigation example">
 		  <ul class="pagination">
 		    <li class="page-item">
@@ -63,14 +61,13 @@
 	
 	
 	
-	<div class="row justify-content-between">
+	<div class="row my-4 justify-content-between">
 		<div class="col-5">
 			<form class="d-flex" action="./list" method="get">
 				<div class="col-4 me-2">
 				<select name="kind" class="form-select " aria-label="Default select example">
-				  <option value="col1">Title</option>
+				  <option value="col1">Name</option>
 				  <option value="col2">Contents</option>
-				  <option value="col3">Writer</option>
 				</select>
 				</div>
 				<div class="col-6 me-2">

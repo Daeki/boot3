@@ -9,6 +9,8 @@ import com.iu.boot3.util.Pager;
 @Mapper
 public interface ProductMapper {
 	
+	public Long getTotalCount(Pager pager)throws Exception;
+	
 	public List<ProductVO> getList(Pager pager)throws Exception;
 	
 	public int setAdd(ProductVO productVO)throws Exception;
