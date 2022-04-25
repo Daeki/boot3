@@ -24,6 +24,10 @@
 		</div>
 	</div>
 	
+	<div class="row" id="list">
+		<!-- 상품 리스트  ajax, name, price, count-->
+	</div>
+	
 	
 	<div class="row mt-4">
 		<form action="add" method="post" enctype="multipart/form-data">
@@ -61,7 +65,7 @@
 			
 		</div>
 		 
-		  <button type="submit" class="btn btn-primary">Write</button>
+		  <button type="button" id="add" class="btn btn-primary">Write</button>
 		</form>
 	
 	</div>
@@ -71,6 +75,40 @@
 
 
 <script type="text/javascript">
+	//list ajax url:ajaxList, Get
+	
+
+	//add
+	$("#add").click(function() {
+		let productName = $("#productName").val();
+		let productPrice = $("#productPrice").val();
+		let productCount = $("#productCount").val();
+		let productDetail = $("#productDetail").summernote("code"); //$("#productDetail").val();
+
+		$.ajax({
+			type:"POST",
+			url:"./add",
+			data: {
+				productName: productName,
+				productPrice:productPrice,
+				productCount:productCount,
+				productDetail:productDetail
+			},
+			success:function(data){
+				if(data.trim()=='1'){
+					alert("상품 등록 완료");
+				}else {
+					alert("상품 등록 실패");
+				}
+				
+			},
+			error:function(){
+				alert("error 발생");
+			}
+		});
+		
+	});
+
 	//summernote
 	 $('#productDetail').summernote({
 		 height: 400

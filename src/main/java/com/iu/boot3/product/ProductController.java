@@ -29,7 +29,8 @@ public class ProductController {
 	public ModelAndView setAdd(ProductVO productVO, MultipartFile [] files)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = productService.setAdd(productVO, files);
-		mv.setViewName("redirect:./list");
+		mv.setViewName("common/result");
+		mv.addObject("result", result);
 		return mv;
 	}
 	
