@@ -28,6 +28,11 @@ public class ProductController {
 	@PostMapping("add")
 	public ModelAndView setAdd(ProductVO productVO, MultipartFile [] files)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		for(MultipartFile f: files) {
+			System.out.println(f.getOriginalFilename());
+			System.out.println(f.getSize());
+		}
+		
 		int result = productService.setAdd(productVO, files);
 		mv.setViewName("common/result");
 		mv.addObject("result", result);
@@ -39,6 +44,17 @@ public class ProductController {
 	public ModelAndView setAdd()throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("product/add");
+		return mv;
+	}
+	
+	@GetMapping("ajaxList")
+	public ModelAndView getAjaxList(Pager pager)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println("ajaxList");
+		List<ProductVO> ar = productService.getList(pager);
+		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
+		mv.setViewName("common/productList");
 		return mv;
 	}
 	

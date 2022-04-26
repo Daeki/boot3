@@ -26,6 +26,7 @@
 	
 	<div class="row" id="list">
 		<!-- 상품 리스트  ajax, name, price, count-->
+		
 	</div>
 	
 	
@@ -75,28 +76,84 @@
 
 
 <script type="text/javascript">
+	//
+	//let pn=1;
+	$("#list").on("click", ".pager", function() {
+		let checkPn=$(this).attr("data-pn");
+		if(checkPn > 0){
+			//pn=checkPn;
+			getList(checkPn);
+		}else {
+			//이전 또는 다음 Block이 X
+			alert("마지막 페이지 입니다");
+		}
+	})
+
+
 	//list ajax url:ajaxList, Get
+	getList(1);
+	
+	function getList(pn){
+		console.log("start");
+		$.ajax({
+			type:"GET",
+			url:"./ajaxList",
+			data:{
+				pn:pn,
+				perPage:5
+			},
+			success:function(data){
+				$("#list").html(data.trim());
+			}
+		});
+	}
 	
 
 	//add
 	$("#add").click(function() {
+		let formData = new FormData();
 		let productName = $("#productName").val();
 		let productPrice = $("#productPrice").val();
 		let productCount = $("#productCount").val();
 		let productDetail = $("#productDetail").summernote("code"); //$("#productDetail").val();
-
-		$.ajax({
+		$(".files").each(function(idx, item) {
+			if(item.files.length>0){
+				console.log(idx); 				//index번호
+				console.log(item);              //<input type="file">
+				console.log(item.files);        //input 태그의 file List
+				console.log(item.files[0]);     //files list중 첫번째 파일
+				console.log("lenth : ", item.files.length);
+				console.log(item.files[0].name) //files list중 첫번째 파일의 이름
+				//formData.append("파라미터명", 값);
+				formData.append("files", item.files[0]);
+			}
+		});//each 끝
+		
+		formData.append("productName", productName);
+		formData.append("productPrice", productPrice);
+		formData.append("productCount", productCount);
+		formData.append("productDetail", productDetail);
+		
+		
+ 		$.ajax({
 			type:"POST",
 			url:"./add",
-			data: {
+		    processData: false,
+		    contentType: false,
+			data:formData /* {
 				productName: productName,
 				productPrice:productPrice,
 				productCount:productCount,
 				productDetail:productDetail
-			},
+			} */,
 			success:function(data){
 				if(data.trim()=='1'){
 					alert("상품 등록 완료");
+					getList();
+					$("#productName").val("");
+					$("#productPrice").val("");
+					$("#productCount").val("");
+					$("#productDetail").summernote("code", ""); //$("#productDetail").val("");
 				}else {
 					alert("상품 등록 실패");
 				}
@@ -105,7 +162,7 @@
 			error:function(){
 				alert("error 발생");
 			}
-		});
+		}); 
 		
 	});
 
@@ -123,7 +180,7 @@
 			return;
 		}
 		let result = '<div class="input-group">';
-		result = result + '<input name="files" type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">'
+		result = result + '<input name="files" type="file" class="form-control files" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">'
 		result = result + '<button class="btn btn-outline-secondary del" type="button" id="inputGroupFileAddon04">X</button>'
 		result = result + '</div>';
 		$("#fileResult").append(result);
