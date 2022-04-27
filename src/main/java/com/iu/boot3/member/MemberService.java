@@ -40,6 +40,8 @@ public class MemberService {
 		
 		int result = memberMapper.setAdd(memberVO);
 		
+		//MEMBERROLE TABLE INSERT
+		
 		if(!file.isEmpty()) {
 			String fileName = fileManger.fileSave(file, "resources/upload/member/");
 			

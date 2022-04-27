@@ -71,20 +71,22 @@
 			onImageUpload:function(files){
 				//files upload한 이미지 파일객체
 				let formData = new FormData();
-				formData.append("files", files[0]);
-				
+				formData.append("file", files[0]);
+
 				// /board/summerFileUpload
-				$.ajax({
+	 			$.ajax({
 					type:"POST",
 					url:"./summerFileUpload",
 					data:formData,
 					contentType:false,
 					processData:false,
 					success:function(data){
+						formData.delete(formData.get("file").name)
+						console.log(formData.get("file").name);
 						$("#contents").summernote('editor.insertImage', data.trim());
 					}
 					
-				});
+				}); 
 				
 			},//onImageUpload 끝
 			onMediaDelete:function(files){
