@@ -25,6 +25,14 @@ public class ProductController {
 		return "product";
 	}
 	
+	@GetMapping("manage")
+	public ModelAndView manage()throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("product/manage");
+		return mv;
+	}
+	
 	@PostMapping("add")
 	public ModelAndView setAdd(ProductVO productVO, MultipartFile [] files)throws Exception{
 		ModelAndView mv = new ModelAndView();
