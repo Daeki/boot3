@@ -23,9 +23,12 @@
 		</div>
 	</div>
 	
+	<div class="d-none">
+		<form id="frm" method="post" enctype="multipart/form-data"></form>
+	</div>
 	
 	<div class="row mt-4">
-		<form action="add" method="post" enctype="multipart/form-data">
+		<form id="frm2" action="add" method="post" enctype="multipart/form-data">
 		  <div class="row mb-3">
 		    <label for="title" class="col-sm-2 col-form-label">Title</label>
 		    <div class="col-sm-10">
@@ -53,7 +56,7 @@
 			
 		</div>
 		 
-		  <button type="submit" class="btn btn-primary">Write</button>
+		  <button id="s" type="submit" class="btn btn-primary">Write</button>
 		</form>
 	
 	</div>
@@ -61,75 +64,10 @@
 	
 </div>	
 
-
-
+<script type="text/javascript" src="../resources/js/fileAdd.js"></script>
+<script type="text/javascript" src="../js/summernote.js"></script>
 <script type="text/javascript">
-	$("#contents").summernote({
-		height:400,
-		placeholder:'내용을 입력하세요',
-		callbacks: {
-			onImageUpload:function(files){
-				//files upload한 이미지 파일객체
-				let formData = new FormData();
-				formData.append("file", files[0]);
-
-				// /board/summerFileUpload
-	 			$.ajax({
-					type:"POST",
-					url:"./summerFileUpload",
-					data:formData,
-					contentType:false,
-					processData:false,
-					success:function(data){
-						formData.delete(formData.get("file").name)
-						console.log(formData.get("file").name);
-						$("#contents").summernote('editor.insertImage', data.trim());
-					}
-					
-				}); 
-				
-			},//onImageUpload 끝
-			onMediaDelete:function(files){
-				let fileName = $(files[0]).attr("src");
-				console.log(fileName);
-				$.ajax({
-					type:"GET",
-					url: "./summerFileDelete",
-					data:{
-						fileName:fileName
-					},
-					success:function(data){
-						console.log(data);
-					}
-				});
-			}//onMediaDelete 끝
-		}
-	});
-
-
-
-	let count=0;
-
-	$("#fileAdd").click(function() {
-		if(count>4){
-			alert('최대 5개만 가능');
-			return;
-		}
-		let result = '<div class="input-group">';
-		result = result + '<input name="files" type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">'
-		result = result + '<button class="btn btn-outline-secondary del" type="button" id="inputGroupFileAddon04">X</button>'
-		result = result + '</div>';
-		$("#fileResult").append(result);
-		count++;
-	});
-	
-	$("#fileResult").on("click", ".del", function() {
-		$(this).parent().remove();
-		count--;
-	} );
-	
-	
-	
+	summernotInit("contents", "");
 </script>
 </body>
 </html>

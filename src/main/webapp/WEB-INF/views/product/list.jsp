@@ -7,7 +7,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <c:import url="../temp/header_css.jsp"></c:import>
+<style type="text/css">
+	.detail {
+		cursor: pointer;
+	}
+</style>
 <title>Insert title here</title>
+
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
@@ -22,7 +28,8 @@
 	
 	<div class="row mt-4">
 		<c:forEach items="${list}" var="vo">
-			<div class="card col-3">
+			<div class="card col-3 detail" data-num="${vo.productNum}" >
+		
 			  <img src="../resources/upload/product/${vo.productFilesVOs[0].fileName}" class="card-img-top" alt="...">
 			  <div class="card-body">
 			    <p class="card-text">${vo.productName}</p>
@@ -30,6 +37,7 @@
 			    <div class="card-footer">
 				    <h5>${vo.productPrice}</h5>
 				</div>
+		
 			</div>
 		</c:forEach>
 		
@@ -78,9 +86,7 @@
 	        	</div>
 	      </form>
 		</div>
-		<div class="col-1">
-			<a href="./add" type="button" class="btn btn-outline-primary">WRITE</a>
-		</div>
+
 	</div>
 
 </div>
@@ -89,5 +95,12 @@
 
 
 <c:import url="../temp/header_script.jsp"></c:import>
+<script type="text/javascript">
+	$(".detail").click(function() {
+		let num = $(this).attr("data-num");
+		location.href="./detail?productNum="+num
+	});
+
+</script>
 </body>
 </html>

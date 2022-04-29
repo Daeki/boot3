@@ -39,13 +39,14 @@ public class InterceptorConfig implements WebMvcConfigurer {
 		registry.addInterceptor(adminInterceptor)
 				.addPathPatterns("/admin/manage");
 		
-		registry.addInterceptor(writerCheckInterceptor)
-		.addPathPatterns("/board/update");
 		
 		registry.addInterceptor(boardInterceptor)
 				.addPathPatterns("/board/*")
 				.excludePathPatterns("/board/list");
 		
+		registry.addInterceptor(writerCheckInterceptor)
+				.addPathPatterns("/board/update")
+				.addPathPatterns("/board/delete");
 		
 		//WebMvcConfigurer.super.addInterceptors(registry);
 	}
