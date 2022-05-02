@@ -16,33 +16,25 @@
 	<div class="container mt-4">
 		<div class="row mt-4">
 			<div class="alert alert-light" role="alert">
-				<h4 style="text-transform: uppercase;">${board} Login</h4>
+				<h4 style="text-transform: uppercase;">${board} Find ID</h4>
 			</div>
 		</div>
 
 
 		<div class="row mt-4">
-			<form action="login" method="post">
+			<form action="findId" method="post">
 				<div class="row mb-3">
-					<label for="id" class="col-sm-2 col-form-label">ID</label>
+					<label for="email" class="col-sm-2 col-form-label">Email</label>
 					<div class="col-sm-10">
-						<input type="text" name="id" class="form-control" id="id">
+						<input type="text" name="email" class="form-control" id="email">
 					</div>
 				</div>
 
-				<div class="row mb-3">
-					<label for="pw" class="col-sm-2 col-form-label">Password</label>
-					<div class="col-sm-10">
-						<input type="password" name="pw" class="form-control" id="pw">
-					</div>
-				</div>
+				
 
-				<button type="submit" class="btn btn-primary">Login</button>
+				<button type="submit" class="btn btn-primary">ID찾기</button>
 				
-				<div class="row">
-					<button id="find" type="button" class="btn btn-danger">ID찾기</button>	
-				</div>
-				
+
 			</form>
 
 		</div>
@@ -51,11 +43,5 @@
 	</div>
 
 
-
-	<script type="text/javascript">
-		$("#find").click(function() {
-			location.href="./findId";
-		})
-	</script>		
 </body>
 </html>

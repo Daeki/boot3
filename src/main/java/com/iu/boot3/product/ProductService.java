@@ -18,6 +18,7 @@ public class ProductService {
 	@Autowired
 	private FileManger fileManger;
 	
+	
 	public int setUpdate(ProductVO productVO, MultipartFile [] multipartFiles)throws Exception{
 		int result = productMapper.setUpdate(productVO);
 		
