@@ -4,10 +4,14 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.iu.boot3.member.MemberVO;
 import com.iu.boot3.util.Pager;
 
 @Mapper
 public interface ProductMapper {
+	
+	
+	
 	public int setUpdate(ProductVO productVO)throws Exception;
 	
 	public Long getTotalCount(Pager pager)throws Exception;

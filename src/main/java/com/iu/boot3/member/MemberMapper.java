@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface MemberMapper {
 	
+	public MemberVO getId(MemberVO memberVO)throws Exception;
+	
 	public MemberVO getFindId(MemberVO memberVO)throws Exception;
 	
 	

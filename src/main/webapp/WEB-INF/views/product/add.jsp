@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,47 +32,68 @@
 	
 
 	<div class="row mt-4">
-		<form action="add" method="post" enctype="multipart/form-data">
+		<!-- <form action="add" method="post" enctype="multipart/form-data"> -->
+		<form:form modelAttribute="productVO" method="post" enctype="multipart/form-data">
 		  <div class="row mb-3">
 		    <label for="productName" class="col-sm-2 col-form-label">Name</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="productName" class="form-control" id="productName">
+		      <!-- <input type="text" name="productName" class="form-control" id="productName"> -->
+		      <form:input path="productName" cssClass="form-control" id="productName"/>
+		      <div>
+		      	<form:errors path="productName"></form:errors>
+		      </div>
 		    </div>
 		  </div>
 		  <div class="row mb-3">
 		    <label for="productPrice" class="col-sm-2 col-form-label">Price</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="productPrice" class="form-control" id="productPrice">
+		      <!-- <input type="text" name="productPrice" class="form-control" id="productPrice"> -->
+		      <form:input path="productPrice" cssClass="form-control" id="productPrice"/>
+		      <div>
+		      	<form:errors path="productPrice"></form:errors>
+		      </div>		      
 		    </div>
 		  </div>
 		  <div class="row mb-3">
 		    <label for="productCount" class="col-sm-2 col-form-label">수량</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="productCount" class="form-control" id="productCount">
+		      <!-- <input type="text" name="productCount" class="form-control" id="productCount"> -->
+		      <form:input path="productCount" cssClass="form-control" id="productCount"/>
+		      <div>
+		      	<form:errors path="productCount"></form:errors>
+		      </div>		      
 		    </div>
 		  </div>		  
 		  
 		 <div class="row mb-3">
 		    <label for="productDeatil" class="col-sm-2 col-form-label">상세설명</label>
 		    <div class="col-sm-10">
-		      <textarea name="productDetail" class="form-control" id="productDetail"></textarea>
+		      <!-- <textarea name="productDetail" class="form-control" id="productDetail"></textarea> -->
+		      <form:textarea path="productDetail" cssClass="form-control" id="productDetail"/>
+		      <div>
+		      	<form:errors path="productDetail"></form:errors>
+		      </div>		      
 		    </div>
 		  </div>
 		  
 		  <div class="row mb-3">
 			<div class="form-check">
-			  <input class="form-check-input sale" type="radio" value="1" name="sale" id="flexRadioDefault1">
+			  <!-- <input class="form-check-input sale" type="radio" value="1" name="sale" id="flexRadioDefault1"> -->
+			  <form:radiobutton path="sale" cssClass="form-check-input sale" value="1" id="flexRadioDefault1"/>
 			  <label class="form-check-label" for="flexRadioDefault1">
 			    판매
 			  </label>
 			</div>
 			<div class="form-check">
-			  <input class="form-check-input sale" type="radio" value="0" checked name="sale" id="flexRadioDefault2" checked>
+			  <!-- <input class="form-check-input sale" type="radio" value="0" checked name="sale" id="flexRadioDefault2" checked> -->
+			  <form:radiobutton path="sale" cssClass="form-check-input sale" value="0" id="flexRadioDefault2"/>
 			  <label class="form-check-label" for="flexRadioDefault2">
 			    판매중지
 			  </label>
 			</div>				
-
+		      <div>
+		      	<form:errors path="sale"></form:errors>
+		      </div>			
 		  </div>
 		  
 		
@@ -82,10 +104,12 @@
 			
 		</div>
 		 
-		  <button type="button" id="add" class="btn btn-primary">Write</button>
-		</form>
+		  <button type="submit" id="add2" class="btn btn-primary">Write</button>
+		  </form:form>
+		<%-- </form> --%>
 	
 	</div>
+
 	
 	
 </div>	
