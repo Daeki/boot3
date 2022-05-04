@@ -6,7 +6,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 //@EnableAspectJAutoProxy
-@EnableScheduling
+//@EnableScheduling
 @SpringBootApplication
 public class Boot3Application {
 

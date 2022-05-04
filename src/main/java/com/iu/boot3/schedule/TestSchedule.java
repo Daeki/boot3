@@ -32,7 +32,7 @@ public class TestSchedule {
 	}
 
 	
-	@Scheduled(cron = "50 * * * * *")
+//	@Scheduled(cron = "50 * * * * *")
 	public void cronSchedule()throws Exception{
 		Calendar calendar = Calendar.getInstance();
 		System.out.println(calendar.getTime());
