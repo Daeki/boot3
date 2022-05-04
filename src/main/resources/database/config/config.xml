@@ -12,7 +12,7 @@
 		<typeAlias type="com.iu.boot3.product.ProductVO" alias="ProductVO"/>
 		<typeAlias type="com.iu.boot3.product.ProductFilesVO" alias="ProductFilesVO"/>
 		<typeAlias type="com.iu.boot3.member.RoleVO" alias="RoleVO"/>
-		
+		<typeAlias type="com.iu.boot3.cart.CartVO" alias="CartVO"/>
 		<typeAlias type="com.iu.boot3.util.Pager" alias="Pager"/>
 		
 		<typeAlias type="java.util.Map" alias="Map"/>

@@ -28,18 +28,20 @@ public class ExceptionController {
 	}
 	
 	@ExceptionHandler(NullPointerException.class)
-	public ModelAndView ex2() {
+	public ModelAndView ex2(Exception e) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("Nullpointer 예외 발생 처리");
+		e.printStackTrace();
 		mv.setViewName("error/error");
 		return mv;
 	}
 	
 	@ExceptionHandler(Exception.class)
-	public ModelAndView ex3() {
+	public ModelAndView ex3(Exception e) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("Exception 예외 발생 처리");
 		mv.setViewName("error/error");
+		e.printStackTrace();
 		return mv;
 	}
 	
